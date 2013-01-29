@@ -12,12 +12,16 @@ import com.caved_in.Events.SignListener;
 import com.caved_in.Items.ItemCommandExecutor;
 import com.caved_in.PlayerStats.StatsCommandExecutor;
 import com.caved_in.Target.TargetCommandExecutor;
+import de.kumpelblase2.remoteentities.EntityManager;
+import de.kumpelblase2.remoteentities.RemoteEntities;
+import de.kumpelblase2.remoteentities.exceptions.PluginNotEnabledException;
 
 public class TotalWar extends JavaPlugin {
 	public static Economy economy = null;
 	public static Permission permission = null;
 	public static final String Templar_Permission = "Totalwar.Templar";
 	public static final String Pagan_Permission = "Totalwar.Pagan";
+	public static EntityManager EntityManager;
 	
 	@Override
 	public void onEnable() {
@@ -29,6 +33,14 @@ public class TotalWar extends JavaPlugin {
 		new SignListener(this);
 		setupEconomy();
 		setupPermissions();
+		try
+		{
+			EntityManager = RemoteEntities.createManager(this);
+		}
+		catch (PluginNotEnabledException e)
+		{
+			e.printStackTrace();
+		}
 		getCommand("stats").setExecutor(new StatsCommandExecutor(this));
 		getCommand("target").setExecutor(new TargetCommandExecutor(this));
 		getCommand("itemgen").setExecutor(new ItemCommandExecutor(this));
