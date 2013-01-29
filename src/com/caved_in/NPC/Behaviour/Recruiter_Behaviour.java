@@ -3,6 +3,7 @@ package com.caved_in.NPC.Behaviour;
 import org.bukkit.entity.Player;
 
 import de.kumpelblase2.remoteentities.api.RemoteEntity;
+import de.kumpelblase2.remoteentities.api.thinking.Desire;
 import de.kumpelblase2.remoteentities.api.thinking.EnterSightBehavior;
 import de.kumpelblase2.remoteentities.api.thinking.InteractBehavior;
 
@@ -29,6 +30,7 @@ public class Recruiter_Behaviour extends EnterSightBehavior {
 	private String Pagan_Recruit_Neutral = Pagan_Messages[2];
 	private String Pagan_Greet_Pagan = Pagan_Messages[3];
 	private String Pagan_Threaten_Templar = Pagan_Messages[1];
+	
 
 	public Recruiter_Behaviour(RemoteEntity inEntity, Faction NPCFaction)
 	{
@@ -72,5 +74,15 @@ public class Recruiter_Behaviour extends EnterSightBehavior {
 				Player.sendMessage(Pagan_Recruit_Neutral);
 			}
 		}
+	}
+	
+	public void SetFaction(Faction Faction)
+	{
+		this.Faction = Faction;
+	}
+	
+	public Faction GetFaction()
+	{
+		return this.Faction;
 	}
 }

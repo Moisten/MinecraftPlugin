@@ -1,7 +1,7 @@
 name: TotalWar
 main: com.caved_in.TotalWar
 version: 1.1
-depend: [MaterialAPI,ProtocolLib,Vault]
+depend: [MaterialAPI,ProtocolLib,Vault,RemoteEntities]
 commands:
    stats:
       description: View the kills and deaths of another player, or yourself
