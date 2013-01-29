@@ -1,0 +1,18 @@
+name: TotalWar
+main: com.caved_in.TotalWar
+version: 1.1
+depend: [MaterialAPI,ProtocolLib,Vault]
+commands:
+   stats:
+      description: View the kills and deaths of another player, or yourself
+      usage: /<command> [who]
+      permission: TotalWar.player
+      permission-message: You don't have the required permission to use this command.
+   target:
+      description: Set a player as your prey
+      usage: /<command> [clear]
+      permission: TotalWar.target
+      permission-message: You don't have the required permission to use this command (Or suffix)
+   itemgen:
+      description: Nope
+      permission: TotalWar.itemgen
