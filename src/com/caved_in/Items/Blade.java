@@ -19,7 +19,7 @@ public class Blade extends CustomMaterial {
 	private String[] Weapon_Type = new String[] {"Stick",/*"Neatly Trimmed Pile",*/ "Buster Blade","Greatsword","Katana","Noodle","Paddle",
 			"Baton","Straw"};
 	private String[] Suffixes = new String[] {"Hobknocking","Ass-Kicking","Doom","Death","Defile","Tickling","Nose Picking","Bacon"
-			,"Stabbing","Hax","Hacks","Kindness","Smokes","Virtue","Killing","Butter","Cheese","Cuteness","Cutting","Super Evil","Heroism","Kings","Heros","Evil"
+			,"Stabbing","Hax","Hacks","Kindness","Smokes","poop","gas","Virtue","Killing","Butter","Cheese","Cuteness","Cutting","Super Evil","Heroism","Kings","Heros","Evil"
 			};
     public Blade(String id, Material material) {
         super(id, material);
