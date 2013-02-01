@@ -46,7 +46,7 @@ public class Recruiter {
 	
 	private void SetupDesire()
 	{
-		//this.Recruiter_Entity.getMind().addActionDesire(new DesireLookAtNearest(Recruiter_Entity,RemoteEntityType.Human.class,8f)), 1);
+		//this.Recruiter_Entity.getMind().addActionDesire(new DesireLookAtNearest(Recruiter_Entity,Player.class,8f), 1);
 	}
 		
 }

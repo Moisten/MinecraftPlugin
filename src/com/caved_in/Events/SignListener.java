@@ -49,15 +49,15 @@ public class SignListener implements Listener {
 					{
 						if (Target.isOnline())
 						{
-							if (!TotalWar.isSameFaction(Event_Player,(Player)Target))
+							if (TotalWar.isSameFaction(Event_Player,(Player)Target))
+							{
+								Event_Player.sendMessage(TotalWar.ColorMessage("&CYou can't hunt someone in the same faction as you!"));
+							}
+							else
 							{
 								int Target_Worth = Integer.parseInt(Sign_Text[2]);
 								TargetCommandExecutor.Targets.SetTarget(Event_Player,(Player)Target,Target_Worth);
 								Event_Block.breakNaturally();
-							}
-							else
-							{
-								Event_Player.sendMessage(TotalWar.ColorMessage("&CYou can't hunt someone in the same faction as you!"));
 							}
 						}
 						else

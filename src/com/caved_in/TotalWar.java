@@ -8,20 +8,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 
+import com.caved_in.Events.PlayerListener;
 import com.caved_in.Events.SignListener;
+import com.caved_in.Events.TemplarPeaganListener;
 import com.caved_in.Items.ItemCommandExecutor;
 import com.caved_in.PlayerStats.StatsCommandExecutor;
 import com.caved_in.Target.TargetCommandExecutor;
-import de.kumpelblase2.remoteentities.EntityManager;
-import de.kumpelblase2.remoteentities.RemoteEntities;
-import de.kumpelblase2.remoteentities.exceptions.PluginNotEnabledException;
 
 public class TotalWar extends JavaPlugin {
 	public static Economy economy = null;
 	public static Permission permission = null;
 	public static final String Templar_Permission = "Totalwar.Templar";
 	public static final String Pagan_Permission = "Totalwar.Pagan";
-	public static EntityManager EntityManager;
+	//public static EntityManager EntityManager;
 	
 	@Override
 	public void onEnable() {
@@ -31,16 +30,18 @@ public class TotalWar extends JavaPlugin {
 		this.saveResource("quedmessages.yml", false);
 		new myPlayerListener(this);
 		new SignListener(this);
+		new PlayerListener(this);
+		new TemplarPeaganListener(this);
 		setupEconomy();
 		setupPermissions();
-		try
+		/*try
 		{
 			EntityManager = RemoteEntities.createManager(this);
 		}
 		catch (PluginNotEnabledException e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 		getCommand("stats").setExecutor(new StatsCommandExecutor(this));
 		getCommand("target").setExecutor(new TargetCommandExecutor(this));
 		getCommand("itemgen").setExecutor(new ItemCommandExecutor(this));
@@ -74,12 +75,12 @@ public class TotalWar extends JavaPlugin {
 	
 	public static boolean isTemplar(Player Player)
 	{
-		return Player.hasPermission(TotalWar.Templar_Permission);
+		return permission.has(Player,TotalWar.Templar_Permission);
 	}
 	
 	public static boolean isPagan(Player Player)
 	{
-		return Player.hasPermission(TotalWar.Pagan_Permission);
+		return permission.has(Player,TotalWar.Pagan_Permission);
 	}
 	
 	public static boolean isSameFaction(Player A, Player B)
