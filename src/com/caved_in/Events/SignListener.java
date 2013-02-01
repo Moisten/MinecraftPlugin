@@ -27,7 +27,7 @@ public class SignListener implements Listener {
 		this.Plugin = Plugin;
 	}
 	@EventHandler
-	public void onSignInteract(PlayerInteractEvent Event)
+	public void BountySignInteract(PlayerInteractEvent Event)
 	{
 		Action Event_Action = Event.getAction();
 		Player Event_Player = Event.getPlayer();

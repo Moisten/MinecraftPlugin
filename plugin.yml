@@ -16,3 +16,7 @@ commands:
    itemgen:
       description: Nope
       permission: TotalWar.itemgen
+   join:
+      description: Join templars or pegans
+      usage: /<command> [Faction]
+      permission: TotalWar.player

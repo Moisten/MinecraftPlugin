@@ -16,8 +16,8 @@ import com.caved_in.TotalWar;
 
 public class TemplarPeaganListener implements Listener {
 	private TotalWar Plugin;
-	private String[] Templar_Sign_Data = new String[] {"Templars"};
-	private String[] Pagan_Sign_Data = new String[] { "Pagans"};
+	private String[] Templar_Sign_Data = new String[] {"Join","The","Templars"};
+	private String[] Pagan_Sign_Data = new String[] { "Join","The","Pagans"};
 	public TemplarPeaganListener(TotalWar Plugin)
 	{
 		this.Plugin = Plugin;
@@ -25,24 +25,7 @@ public class TemplarPeaganListener implements Listener {
 	}
 	
 	@EventHandler
-	public void NameTag(PlayerReceiveNameTagEvent Event)
-	{
-		if (TotalWar.permission.has(Event.getNamedPlayer(), TotalWar.Templar_Permission))
-		{
-			Event.setTag(ChatColor.YELLOW + Event.getNamedPlayer().getName());
-		}
-		else if (TotalWar.permission.has(Event.getNamedPlayer(), TotalWar.Pagan_Permission))
-		{
-			Event.setTag(ChatColor.GREEN + Event.getNamedPlayer().getName());
-		}
-		else
-		{
-			Event.setTag(ChatColor.ITALIC + Event.getNamedPlayer().getName());
-		}
-	}
-	
-	@EventHandler
-	public void onSignInteract(PlayerInteractEvent Event)
+	public void PromoteSignInteract(PlayerInteractEvent Event)
 	{
 		Action Event_Action = Event.getAction();
 		Player Event_Player = Event.getPlayer();
@@ -56,34 +39,28 @@ public class TemplarPeaganListener implements Listener {
 				{
 					if (TotalWar.isPagan(Event.getPlayer()))
 					{
-						TotalWar.permission.playerRemove(Event.getPlayer(), TotalWar.Pagan_Permission);
-						TotalWar.permission.playerAdd(Event.getPlayer(), TotalWar.Templar_Permission);
+						MakeTemplar(Event.getPlayer());
 						MessageAllPagans("&C" + Event.getPlayer().getName() + " has betrayed the Pagans, kill them.");
 						MessageAllTemplars("&C" + Event.getPlayer().getName() + " has joined the templars!");
-						TagAPI.refreshPlayer(Event.getPlayer());
 					}
 					else
 					{
-						TotalWar.permission.playerAdd(Event.getPlayer(), TotalWar.Templar_Permission);
+						MakeTemplar(Event.getPlayer());
 						MessageAllTemplars("&C" + Event.getPlayer().getName() + " has joined the templars!");
-						TagAPI.refreshPlayer(Event.getPlayer());
 					}
 				}
 				else if (isPaganSign(Clicked_Sign))
 				{
 					if (TotalWar.isTemplar(Event.getPlayer()))
 					{
-						TotalWar.permission.playerRemove(Event.getPlayer(), TotalWar.Templar_Permission);
-						TotalWar.permission.playerAdd(Event.getPlayer(), TotalWar.Pagan_Permission);
+						MakePagan(Event.getPlayer());
 						MessageAllTemplars("&C" + Event.getPlayer().getName() + " has betrayed the Templars, kill them.");
 						MessageAllPagans("&C" + Event.getPlayer().getName() + " has joined the Pagans!");
-						TagAPI.refreshPlayer(Event.getPlayer());
 					}
 					else
 					{
-						TotalWar.permission.playerAdd(Event.getPlayer(), TotalWar.Pagan_Permission);
+						MakePagan(Event.getPlayer());
 						MessageAllPagans("&C" + Event.getPlayer().getName() + " has joined the Pagans!");
-						TagAPI.refreshPlayer(Event.getPlayer());
 					}
 				}
 			}
@@ -91,7 +68,7 @@ public class TemplarPeaganListener implements Listener {
 	}
 	private boolean isTemplarSign(Sign Clicked_Sign)
 	{
-		if (Clicked_Sign.getLine(0).equals(Templar_Sign_Data[0]))
+		if (Clicked_Sign.getLine(0).equalsIgnoreCase(Templar_Sign_Data[0]) && Clicked_Sign.getLine(1).equalsIgnoreCase(Templar_Sign_Data[1]) && Clicked_Sign.getLine(2).equalsIgnoreCase(Templar_Sign_Data[2]))
 		{
 			return true;
 		}
@@ -100,7 +77,7 @@ public class TemplarPeaganListener implements Listener {
 	
 	private boolean isPaganSign(Sign Clicked_Sign)
 	{
-		if (Clicked_Sign.getLine(0).equals(Pagan_Sign_Data[0]))
+		if (Clicked_Sign.getLine(0).equalsIgnoreCase(Pagan_Sign_Data[0]) && Clicked_Sign.getLine(1).equalsIgnoreCase(Pagan_Sign_Data[1]) && Clicked_Sign.getLine(2).equalsIgnoreCase(Pagan_Sign_Data[2]))
 		{
 			return true;
 		}
@@ -125,5 +102,29 @@ public class TemplarPeaganListener implements Listener {
 				P.sendMessage(ChatColor.translateAlternateColorCodes('&',Message));
 			}
 		}
+	}
+	private void MakePagan(Player Player)
+	{
+		TotalWar.permission.playerRemove(Player, TotalWar.Neutral_Name_Color);
+		TotalWar.permission.playerRemove(Player, TotalWar.Templar_Name_Color);
+		TotalWar.permission.playerRemove(Player, TotalWar.Templar_Permission);
+		TotalWar.permission.playerAdd(Player,TotalWar.Pagan_Name_Color);
+		TotalWar.permission.playerAdd(Player, TotalWar.Pagan_Permission);
+	}
+	private void MakeTemplar(Player Player)
+	{
+		TotalWar.permission.playerRemove(Player,TotalWar.Pagan_Name_Color);
+		TotalWar.permission.playerRemove(Player, TotalWar.Pagan_Permission);
+		TotalWar.permission.playerRemove(Player, TotalWar.Neutral_Name_Color);
+		TotalWar.permission.playerAdd(Player, TotalWar.Templar_Name_Color);
+		TotalWar.permission.playerAdd(Player, TotalWar.Templar_Permission);
+	}
+	private void MakeNeutral(Player Player)
+	{
+		TotalWar.permission.playerRemove(Player, TotalWar.Pagan_Permission);
+		TotalWar.permission.playerRemove(Player, TotalWar.Templar_Permission);
+		TotalWar.permission.playerRemove(Player,TotalWar.Pagan_Name_Color);
+		TotalWar.permission.playerRemove(Player, TotalWar.Templar_Name_Color);
+		TotalWar.permission.playerAdd(Player, TotalWar.Neutral_Name_Color);
 	}
 }

@@ -10,6 +10,7 @@ import org.bukkit.event.*;
 
 import com.caved_in.Events.PlayerListener;
 import com.caved_in.Events.SignListener;
+import com.caved_in.Events.TemplarPaganCommandExecutor;
 import com.caved_in.Events.TemplarPeaganListener;
 import com.caved_in.Items.ItemCommandExecutor;
 import com.caved_in.PlayerStats.StatsCommandExecutor;
@@ -20,6 +21,9 @@ public class TotalWar extends JavaPlugin {
 	public static Permission permission = null;
 	public static final String Templar_Permission = "Totalwar.Templar";
 	public static final String Pagan_Permission = "Totalwar.Pagan";
+	public static final String Templar_Name_Color = "nametags.color.yellow";
+	public static final String Pagan_Name_Color = "nametags.color.green";
+	public static final String Neutral_Name_Color = "nametags.format.italic";
 	//public static EntityManager EntityManager;
 	
 	@Override
@@ -34,17 +38,10 @@ public class TotalWar extends JavaPlugin {
 		new TemplarPeaganListener(this);
 		setupEconomy();
 		setupPermissions();
-		/*try
-		{
-			EntityManager = RemoteEntities.createManager(this);
-		}
-		catch (PluginNotEnabledException e)
-		{
-			e.printStackTrace();
-		}*/
 		getCommand("stats").setExecutor(new StatsCommandExecutor(this));
 		getCommand("target").setExecutor(new TargetCommandExecutor(this));
 		getCommand("itemgen").setExecutor(new ItemCommandExecutor(this));
+		getCommand("join").setExecutor(new TemplarPaganCommandExecutor(this));
 	}
 	@Override
 	public void onDisable() {
