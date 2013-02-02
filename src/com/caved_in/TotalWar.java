@@ -12,7 +12,6 @@ import com.caved_in.Events.PlayerListener;
 import com.caved_in.Events.SignListener;
 import com.caved_in.Events.TemplarPaganCommandExecutor;
 import com.caved_in.Events.TemplarPeaganListener;
-import com.caved_in.Items.ItemCommandExecutor;
 import com.caved_in.PlayerStats.StatsCommandExecutor;
 import com.caved_in.Target.TargetCommandExecutor;
 
@@ -35,12 +34,11 @@ public class TotalWar extends JavaPlugin {
 		new myPlayerListener(this);
 		new SignListener(this);
 		new PlayerListener(this);
-		new TemplarPeaganListener(this);
+		//new TemplarPeaganListener(this);
 		setupEconomy();
 		setupPermissions();
 		getCommand("stats").setExecutor(new StatsCommandExecutor(this));
 		getCommand("target").setExecutor(new TargetCommandExecutor(this));
-		getCommand("itemgen").setExecutor(new ItemCommandExecutor(this));
 		getCommand("join").setExecutor(new TemplarPaganCommandExecutor(this));
 	}
 	@Override

@@ -9,8 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.kitteh.tag.PlayerReceiveNameTagEvent;
-import org.kitteh.tag.TagAPI;
 
 import com.caved_in.TotalWar;
 
@@ -24,7 +22,7 @@ public class TemplarPeaganListener implements Listener {
 		Plugin.getServer().getPluginManager().registerEvents(this, Plugin);
 	}
 	
-	@EventHandler
+	/*@EventHandler
 	public void PromoteSignInteract(PlayerInteractEvent Event)
 	{
 		Action Event_Action = Event.getAction();
@@ -66,6 +64,7 @@ public class TemplarPeaganListener implements Listener {
 			}
 		}
 	}
+	*/
 	private boolean isTemplarSign(Sign Clicked_Sign)
 	{
 		if (Clicked_Sign.getLine(0).equalsIgnoreCase(Templar_Sign_Data[0]) && Clicked_Sign.getLine(1).equalsIgnoreCase(Templar_Sign_Data[1]) && Clicked_Sign.getLine(2).equalsIgnoreCase(Templar_Sign_Data[2]))

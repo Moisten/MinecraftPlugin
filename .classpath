@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="com/caved_in/ExtrasInventory.java|com/caved_in/NPC/Recruiter.java|com/caved_in/NPC/Behaviour/Recruiter_Behaviour.java" kind="src" path="src"/>
+	<classpathentry excluding="com/caved_in/ExtrasInventory.java|com/caved_in/NPC/Recruiter.java|com/caved_in/NPC/Behaviour/Recruiter_Behaviour.java|com/caved_in/Items/Blade.java|com/caved_in/Items/ItemCommandExecutor.java|com/caved_in/Events/MobDeathListener.java|com/caved_in/Items/|com/caved_in/NPC/Behaviour/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="C:/Users/B/Downloads/Vault.jar"/>
 	<classpathentry kind="lib" path="C:/Users/B/Downloads/bukkit-1.4.7-R0.2-20130119.122210-3.jar">
@@ -8,9 +8,5 @@
 			<attribute name="javadoc_location" value="http://jd.bukkit.org/apidocs/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/B/Downloads/MaterialAPI 1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/B/Downloads/ProtocolLib-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/B/Downloads/EpicBossRecoded.jar"/>
-	<classpathentry kind="lib" path="C:/Users/B/Desktop/TagAPI (4).jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
